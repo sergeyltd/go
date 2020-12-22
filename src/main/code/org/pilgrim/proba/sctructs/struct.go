@@ -5,13 +5,23 @@ import (
 )
 
 func main() {
-	m := map[string]int{"foo": 42, "goo":10}
-	fmt.Println(m)
-	fmt.Println(m["foo"])
+	type user struct{
+		id int
+		firstName string
+		lastName string
+	}
 
-	m["foo"] = 27
-	fmt.Println(m)
+	var u user
+	u.id = 1
+	u.firstName = "Tom"
+	u.lastName = "Riddle"
+	fmt.Println(u)
 
-	delete(m, "foo")
-	fmt.Println(m)
+	u2 := user{
+		id: 2,
+		firstName: "Harry",
+		lastName: "Potter",
+	}
+
+	fmt.Println(u2)
 }
