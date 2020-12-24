@@ -1,18 +1,11 @@
 package main
 
 import (
-	"github.com/pluralsight/webservicedemo/modules"
-	"fmt"
+	"net/http"
+	"github.com/pluralsight/webservicedemo/controllers"
 )
 
 func main(){
-	u := modules.User{
-		ID: 3,
-		FirstName: "Tom",
-		LastName: "Riddle",
-	}
-
-	u.ID = 4
-	fmt.Println("Hello Webservice Demo")
-	fmt.Println(u)
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
 }
