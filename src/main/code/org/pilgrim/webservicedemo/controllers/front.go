@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	"io"
 	"net/http"
 )
 
@@ -20,7 +19,8 @@ func RegisterControllers() {
 }
 
 
-func encodeResponseAsJSON(data interface{}, w io.Writer) {
+func encodeResponseAsJSON(data interface{}, w http.ResponseWriter) {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	enc := json.NewEncoder(w)
 	enc.Encode(data)
 }
