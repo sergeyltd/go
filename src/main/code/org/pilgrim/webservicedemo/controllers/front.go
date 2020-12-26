@@ -1,6 +1,10 @@
 package controllers
 
-import "net/http"
+import (
+	"encoding/json"
+	"io"
+	"net/http"
+)
 
 // RegisterControllers to register
 func RegisterControllers() {
@@ -13,4 +17,10 @@ func RegisterControllers() {
 
 	http.Handle("/admin", *ac)
 	http.Handle("/admin/", *ac)
+}
+
+
+func encodeResponseAsJSON(data interface{}, w io.Writer) {
+	enc := json.NewEncoder(w)
+	enc.Encode(data)
 }
